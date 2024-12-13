@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Door Adventure</title>
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #1d1d4e, #2a2a75);
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin: 20px 0;
+            font-size: 3rem;
+        }
+
+        .door-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            gap: 20px;
+        }
+
+        .door {
+            width: 120px;
+            height: 200px;
+            background-color: #8b4513;
+            border: 5px solid #5a3312;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .door:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .door:active {
+            transform: scale(1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .door-handle {
+            width: 20px;
+            height: 40px;
+            background-color: #d4af37;
+            border-radius: 50%;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: float 5s infinite;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const starContainer = document.createElement("div");
+            starContainer.className = "stars";
+            document.body.appendChild(starContainer);
+
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement("div");
+                star.className = "star";
+                star.style.left = Math.random() * 100 + "%";
+                star.style.top = Math.random() * 100 + "%";
+                star.style.animationDuration = Math.random() * 5 + 3 + "s";
+                starContainer.appendChild(star);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Magic Door Adventure</h1>
+    <div class="door-container">
+        <div class="door" onclick="window.open('mozart.php', '_blank')">
+            <div class="door-handle"></div>
+        </div>
+        <div class="door" onclick="window.open('alexandar.php', '_blank')">
+            <div class="door-handle"></div>
+        </div>
+        <div class="door" onclick="window.open('isaac.php', '_blank')">
+            <div class="door-handle"></div>
+        </div>
+    </div>
+</body>
+</html>
